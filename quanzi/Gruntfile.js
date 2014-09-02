@@ -33,9 +33,10 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.loadNpmTasks("grunt-ts");
+    //grunt.loadNpmTasks("grunt-ts");
 
-    grunt.registerTask("default", ["ts:build"]);
+    //grunt.registerTask("default", ["ts:build"]);
+    grunt.registerTask("default", []);
 }
 
 

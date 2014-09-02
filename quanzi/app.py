@@ -71,16 +71,10 @@ class HomeHandler(BaseHandler):
             fp.close()
 
     def get(self):
-        f = self.ff("http://www.baidu.com")
-        print f.result()
+        self.write("ooo")
+        while 1:
+            pass
 
-    def ff(self, url):
-        http_client = tornado.httpclient.AsyncHTTPClient()
-        my_future = Future()
-        fetch_future = http_client.fetch(url)
-        fetch_future.add_done_callback(
-            lambda f: my_future.set_result(f.result()))
-        return my_future
 
 def main():
     tornado.options.parse_command_line()
