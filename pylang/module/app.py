@@ -3,10 +3,11 @@
 class Base(object):
     pass
 
-class AttackMixin(Base):
+class AttackMixin(object):
 
     def attack(self):
         print "%s attack\n" % self.__name
+
 
 class User(Base, AttackMixin):
 
@@ -19,8 +20,7 @@ class User(Base, AttackMixin):
         print self.__name
 
 
-
 user = User("vincent")
 user.display()
-
+user.attack()
 
