@@ -1,42 +1,50 @@
 # coding=utf-8
 
-BUFFER_SIZE = 1024
-item_count = 0
+class Pc(object):
+    """
+     loop
+           while q is not full
+               create some new items
+               add the items to q
+           yield to consume
 
-producer_gen = None
-consumer_gen = None
+     loop
+           while q is not empty
+               remove some items from q
+               use the items
+           yield to produce
+    """
 
-def producer():
-    while True:
-        if item_count >= BUFFER_SIZE:
-            consumer_gen.next()
-        else:
-            item_count = item_count + 1
-            yield
+    _BUFFER_SIZE = 1024
+    _item_count = 0
 
+    _producer_gen = None
+    _consumer_gen = None
 
-def consumer():
-    while True:
-        if item_count <= 0:
-            producer_gen.next()
-        else:
-            item_count = item_count - 1
-            yield
+    def _producer(self):
+        while True:
+            if self._item_count < self._BUFFER_SIZE:
+                self._item_count = self._item_count + 1
 
+            # 在整个过程中 
+            yield self._consumer_gen.next()
 
-def main():
-    producer_gen = producer()
-    consumer_gen = consumer()
+    def _consumer(self):
+        while True:
+            if self._item_count > 0:
+                self._item_count = self._item_count - 1
 
-    i = 0
-    while True:
-        i = i + 1
-        if i >= 10000:
-            print "item_count=%d" % item_count
-            i = 0
+            yield self._producer_gen.next()
 
+    def __init__(self):
+        self._producer_gen = self._producer()
+        self._consumer_gen = self._consumer()
+
+    def run(self):
+        self._producer_gen.next()
 
 if __name__ == "__main__":
-    main()
+    pc = Pc()
+    pc.run()
 
 
