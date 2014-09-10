@@ -2,7 +2,6 @@
 
 define [\jquery, \backbone], ($, Backbone) ->
 
-
   HomeView = Backbone.View.extend do
     el: \#main
     events:

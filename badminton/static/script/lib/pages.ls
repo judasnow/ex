@@ -2,4 +2,5 @@
 # 之间的调度
 
 define [\backbone], (Backbone) ->
-  class Page 
+  class Pages
+    () ->
