@@ -1,0 +1,14 @@
+{
+    "name": "ex-badminton",
+    "version": "0.1.0",
+    "repository": "git://github.com/judasnow/ex",
+
+    "dependencies": {
+
+    },
+
+    "devDependencies": {
+        "grunt": "~0.4.5"
+    }
+}
+
