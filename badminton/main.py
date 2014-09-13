@@ -19,6 +19,7 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("home.html")
 
+
 if __name__ == "__main__":
     app = tornado.web.Application([
         (r"/", MainHandler)
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     DEBUG=True,
     autoreload=True)
 
-    app.listen(6000)
+    app.listen(8888)
     tornado.ioloop.IOLoop.instance().start()
 
 
