@@ -2,22 +2,31 @@
 
 import os
 import sys
-import logging
+
+from badminton.lib.color_logging import logging
 
 import tornado.web
 import tornado.ioloop
+import tornado.log
 
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)-15s | %(message)s",
+                    datefmt='%Y-%m-%d %H:%M:%S')
 logger = logging.getLogger("badminton")
 logger.setLevel("DEBUG")
 
 
-class MainHandler(tornado.web.RequestHandler):
+class BaseHandler(tornado.web.RequestHandler):
 
-    def prepend(self):
-        logger.debug(self.request.body)
+    def initialize(self):
+        self.logger = logger
+
+
+class MainHandler(BaseHandler):
 
     def get(self):
         self.render("home.html")
+
 
 if __name__ == "__main__":
     app = tornado.web.Application([
@@ -25,7 +34,7 @@ if __name__ == "__main__":
     ],
     static_path=os.path.join(os.path.dirname(__file__), "static"),
     template_path="badminton/tpl",
-    DEBUG=True,
+    debug=True,
     autoreload=True)
 
     app.listen(6000)
