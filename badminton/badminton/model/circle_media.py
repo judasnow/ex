@@ -1,4 +1,6 @@
-# coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 
 class CircleMedia(db.Model):
     """ 帖子中的多媒体资源 """

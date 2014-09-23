@@ -5,7 +5,6 @@ import datetime
 
 from sporting.database import db
 
-
 class Circle(db.Model):
     """ 圈子(俱乐部) """
 
