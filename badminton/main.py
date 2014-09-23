@@ -28,10 +28,21 @@ class MainHandler(BaseHandler):
         self.render("home.html")
 
 
+class CircleHandler(BaseHandler):
+
+    def get(self):
+        self.write("cirles")
+
+
 if __name__ == "__main__":
+
     app = tornado.web.Application([
-        (r"/", MainHandler)
+        (r"/", MainHandler),
+        (r"/circles", CircleHandler),
+        (r"/events", EventsHandler),
+        (r"/topics", TopicsHandler)
     ],
+
     static_path=os.path.join(os.path.dirname(__file__), "static"),
     template_path="badminton/tpl",
     debug=True,

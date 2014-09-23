@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import unittest
 
+
 TEST_MODULES = [
     'model.test_circle',
 ]
+
 
 def all():
     try:
