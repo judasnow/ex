@@ -1,26 +1,9 @@
-# coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-class Base(object):
-    pass
+import os
+import importlib
 
-class AttackMixin(object):
-
-    def attack(self):
-        print "%s attack\n" % self.__name
-
-
-class User(Base, AttackMixin):
-
-    __name = ""
-
-    def __init__(self, name):
-        self.__name = name
-
-    def display(self):
-        print self.__name
-
-
-user = User("vincent")
-user.display()
-user.attack()
+for file in [file[:-3] for file in os.listdir(".") if file.find("py") != -1 and file.find("pyc") == -1]:
+    m = importlib.import_module(file)
 
