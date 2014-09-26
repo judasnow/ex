@@ -39,3 +39,11 @@ desc ls = "This list is " ++ what ls
           what xs = "a longer list"
 
 
+data Bool' = False | True
+data Sharp' = Circle Float Float Float | Rectangle Float Float Float Float
+
+
+area :: Sharp' -> Float
+area (Circle _ _ r) = pi * r ^ 2
+area (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)
+
