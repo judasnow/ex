@@ -1,18 +1,17 @@
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'me',
-  password : 'secret'
-});
 
-connection.connect();
+mysql = require \mysql
 
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
+conn = mysql.createConnection do
+    host: \192.168.1.113
+    user: \root
+    database: \test
+    password: \root
 
-  console.log('The solution is: ', rows[0].solution);
-});
+conn.connect!
 
-connection.end();
+(err, rows) <- conn.query "select 1 + 1 as solution"
+console.dir rows
+
+conn.end!
 
 
