@@ -1,6 +1,5 @@
 # coding=utf-8
 
-
 def repeat(el, n):
     i = 0
     while True:
