@@ -1,0 +1,13 @@
+{
+    "name": "fakers",
+    "description": "",
+    "version": "",
+    "contributors": [],
+    "repository": {},
+    "scripts": {},
+    "devDependencies": {
+        "LiveScript": "",
+        "faker": "",
+        "request": ""
+    }
+}
