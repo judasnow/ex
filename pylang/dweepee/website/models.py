@@ -1,35 +1,31 @@
 from django.db import models
 
+class Blog(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.TextField()
 
-class User(models.Model):
-    username = models.CharField(max_length=200)
-    password = models.CharField(max_length=128)
-    email = models.CharField(max_length=128)
-    ip = models.CharField(max_length=27, default="")
-    join_data = models.DateTimeField(auto_now=True)
+    def __unicode__(self):              # __unicode__ on Python 2
+        return self.name
 
-    followers = models.ManyToManyField("self", through="Rela", symmetrical=False, related_name="followers_")
-    following = models.ManyToManyField("self", through="Rela", symmetrical=False, related_name="following_")
+class Author(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
 
-    def __str__(self):
-        return username
+    def __unicode__(self):              # __unicode__ on Python 2
+        return self.name
 
+class Entry(models.Model):
+    blog = models.ForeignKey(Blog)
+    headline = models.CharField(max_length=255)
+    body_text = models.TextField()
+    pub_date = models.DateField()
+    mod_date = models.DateField()
+    authors = models.ManyToManyField(Author)
+    n_comments = models.IntegerField()
+    n_pingbacks = models.IntegerField()
+    rating = models.IntegerField()
 
-class Message(models.Model):
-    created_by = models.ForeignKey(User)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
+    def __unicode__(self):              # __unicode__ on Python 2
+        return self.headline
 
-    def __str__(self):
-        return content
-
-
-class Rela(models.Model):
-    to_user = models.ForeignKey(User, related_name="related_to")
-    from_user = models.ForeignKey(User, related_name="relationships")
-    created_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return "from_user: %s, to_user: %s" % (from_user, to_user)
-
-
+<D-2>

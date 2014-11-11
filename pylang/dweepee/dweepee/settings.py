@@ -60,11 +60,11 @@ WSGI_APPLICATION = 'dweepee.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dweepee',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dweepee.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '',
     }
 }
