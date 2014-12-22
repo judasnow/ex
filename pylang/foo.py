@@ -1,19 +1,31 @@
 #!/usr/bin/env python
-# encoding=utf-8
+# coding=utf-8
 
-import os
+def test_metaclass(name, bases, dict):
+    print 'The Class Name is', name
+    print 'The Class Bases are', bases
+    print 'The dict has', len(dict), 'elems, the keys are', dict.keys()
 
-def main():
-    """docstring for main"""
+    # str is not callable
+    return "yellow"
 
-    try:
-        x = 3
+class M(type):
+
+    def __new__(cls, name, bases, attrs):
+        newattrs = dict(attrs, action_list=attrs["action_cooldown"].keys())
+        return super(M, cls).__new__(cls, name, bases, newattrs)    
+
+class User(object):
+ 
+    __metaclass__ = test_metaclass
     
-    except:
-        pass
-        
-    print x
+    action_cooldown = {"att": 5,
+                       "def": 10}
     
+    def action(self, action):
+        if action in self.action_list:
+            print "%s cooldown is %s" % (action, self.action_cooldown[action])
 
-if __name__ == "__main__":
-    main()
+#u = User()
+#u.action("att")
+

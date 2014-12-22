@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "gentoo"
+  config.vm.box = "centos"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -23,10 +23,8 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 80, host: 28080
-  config.vm.network "forwarded_port", guest: 8000, host: 28000
-  config.vm.network "forwarded_port", guest: 9000, host: 29000
   config.vm.network "forwarded_port", guest: 8888, host: 28888
-  config.vm.network "forwarded_port", guest: 3306, host: 23306
+  config.vm.network "forwarded_port", guest: 8000, host: 28000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
