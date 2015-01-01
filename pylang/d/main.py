@@ -1,5 +1,6 @@
 # coding=utf-8
 
+import time
 
 import tornado
 from tornado.options import define, options
@@ -17,7 +18,7 @@ def main():
     if options.cmd == "start_web":
         from d.web.urls import urls
 
-        logger.info("web start")
+        #logger.info("web start")
 
         application = tornado.web.Application(urls,
                                               debug=options.debug,
@@ -28,9 +29,10 @@ def main():
     elif options.cmd == "start_worker":
         from d.worker.worker import DBGroupWorker
 
-        group_list = ["haixiuzu", "meituikong", "miniskirtlegs", "515085", "516876", "103485"]
+        group_list = ["Xsz", "haixiuzu", "meituikong", "miniskirtlegs", "515085", "516876", "103485", "510760"]
 
         while 1:
+            time.sleep(2)
             for group_name in group_list:
                 #logger.info("%s: work start" % group_name)
                 w = DBGroupWorker(group_name)

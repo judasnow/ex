@@ -13,12 +13,13 @@ from d.models.topic import Topic
 from d.models.image import Image
 
 #from d.logging import logger
+from d.config import config
 
 
 class WorkerBase(object):
     """ base worker """
 
-    headers = {'User-Agent': 'Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/2.0 Safari/536.11'}
 
     imgs_dir_name = ""
     list_page_url = ""
@@ -80,6 +81,7 @@ class WorkerBase(object):
         # 遍历抓取每一个 topic 页面中的 img 元素
 
         for topic_id in topic_ids:
+            time.sleep(2)
             try:
 
                 try:
@@ -96,6 +98,7 @@ class WorkerBase(object):
 
                 imgs = []
                 for img_url in img_urls:
+                    time.sleep(2)
 
                     try:
                         if Image.get(origin_url=img_url):
@@ -106,10 +109,10 @@ class WorkerBase(object):
 
                     img = self.fetch_img(img_url)
 
-                    if not os.path.exists("imgs/%s" % self.imgs_dir_name):
-                        os.mkdir("imgs/%s" % self.imgs_dir_name)
+                    if not os.path.exists("%s/imgs/%s" % (config["imgs_path"], self.imgs_dir_name)):
+                        os.mkdir("%s/imgs/%s" % (config["imgs_path"], self.imgs_dir_name))
 
-                    file_name = "imgs/%s/%s.jpg" % (self.imgs_dir_name, time.time())
+                    file_name = "%s/imgs/%s/%s.jpg" % (config["imgs_path"], self.imgs_dir_name, time.time())
 
                     Image.create(origin_url=img_url, file_name=file_name, topic=topic)
 
