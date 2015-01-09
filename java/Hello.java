@@ -1,15 +1,5 @@
 import javax.swing.*;
 
-public class Hello {
-<<<<<<< HEAD
-// Save as "Hello.java"
-   public static void main(String[] args) {
-      System.out.println("Hello, world!");   // print message
-   }
-}
-
-=======
-
     /**{
      * 创建并显示GUI。出于线程安全的考虑，
      * 这个方法在事件调用线程中调用。
@@ -41,4 +31,4 @@ public class Hello {
         });
     }
 }
->>>>>>> 35e28b6feed485293c128429e7c8d974d92c40aa
+
