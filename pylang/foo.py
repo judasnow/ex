@@ -1,47 +1,32 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-def test_metaclass(name, bases, dict):
-    print 'The Class Name is', name
-    print 'The Class Bases are', bases
-    print 'The dict has', len(dict), 'elems, the keys are', dict.keys()
 
-    # str is not callable
-    return "yellow"
+# a Descriptors
+class Desc(object):
 
+    data = None
+
+    def __get__(self, instance, owner):
+        print instance
+        print owner
+        return "1024"
+        
+    def __set__(self, instance, value):
+        print instance
+        self.data = value
+        
+    def __delete__(self, instance):
+        pass
+
+
+class Foo(object):
     
-def init_attributes(name, bases, dict):
-    if 'attributes' in dict:
-        for attr in dict['attributes']:
-            dict[attr] = None
-
-    return type(name, bases, dict)
+    desc = Desc()
     
-class MetaSingleton(type):
-    instance = None
-    def __call__(cls, *args, **kw):
-        if cls.instance is None:
-            cls.instance = super(MetaSingleton, cls).__call__(*args, **kw)
-        return cls.instance
+    def __init__(self):
+        pass
+        
 
-class M(type):
-
-    def __new__(cls, name, bases, attrs):
-        newattrs = dict(attrs, action_list=attrs["action_cooldown"].keys())
-        return super(M, cls).__new__(cls, name, bases, newattrs)    
-
-
-class User(object):
- 
-    __metaclass__ = MetaSingleton
-    
-    action_cooldown = {"att": 5,
-                       "def": 10}
-    
-    def action(self, action):
-        if action in self.action_list:
-            print "%s cooldown is %s" % (action, self.action_cooldown[action])
-
-u = User()
-#u.action("att")
-
+f = Foo()
+print f.desc

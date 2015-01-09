@@ -1,13 +1,14 @@
-# coding=utf-8
-
-class Callcc(object):
-
-    _gen = None
-
-    def __init__(self):
-        pass
-
-    def run(self):
-        pass
+#!/usr/bin/env python
 
 
+def p():
+    while True:
+        print "p"
+        yield c
+    
+def c():
+    while True:
+        print "c"
+        yield p
+
+p().next()
