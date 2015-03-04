@@ -1,13 +1,23 @@
-# coding=utf-8
+#!/usr/bin/env python
 
-class Callcc(object):
+import types
+import functools
 
-    _gen = None
 
-    def __init__(self):
+def is_admin(type_or_func):
+    
+    @functools.wraps(type_or_func)
+    def _is_admin(x):
         pass
 
-    def run(self):
-        pass
+    if isinstance(type_or_func, types.FunctionType):
+        return _is_admin(type_or_func)
+        
+    else:
+        return _is_admin
 
+
+@is_admin
+def get_user_info():
+    pass
 
