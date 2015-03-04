@@ -8,8 +8,9 @@ from tornado.options import define, options
 #from d.logging import logger
 
 
-define("cmd", metavar="start_web|test_worker", default="")
+define("cmd", metavar="start_web|test_worker|start_worker", default="")
 define("debug", default=False)
+
 
 def main():
 
@@ -29,7 +30,7 @@ def main():
     elif options.cmd == "start_worker":
         from d.worker.worker import DBGroupWorker
 
-        group_list = ["Xsz", "haixiuzu", "meituikong", "miniskirtlegs", "515085", "516876", "103485", "510760"]
+        group_list = ["haixiuzu", "meituikong", "miniskirtlegs", "515085", "516876", "103485", "510760"]
 
         while 1:
             time.sleep(2)
@@ -49,6 +50,7 @@ def main():
 
     elif option.cmd == "migre_db":
         pass
+
 
 if __name__ == "__main__":
     main()
