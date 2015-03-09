@@ -32,3 +32,9 @@ import javax.swing.*;
     }
 }
 
+
+class Hello {
+    public void Main() {
+        
+    }
+}

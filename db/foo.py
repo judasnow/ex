@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def main():
-    with 3 as x:
-        pass
+
+from peewee import *
+
+
+class User(peewee.models.Model):
+    pass
+
 
 if __name__ == "__main__":
     main()
