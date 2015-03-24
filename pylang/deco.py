@@ -1,29 +1,53 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import functools
+# coding=utf-8
 
 
-def qqq(a):
-    """ in qqq """
-    pass
+def struct(*args):
+
+    class _Struct(type):
+        def __new__(cls, name, bases, dcts):
+
+            print "__new__ %s" % cls
+
+            for key in args:
+                setattr(cls, key, None)
+
+            t = type(name, bases, dcts)
+            return t
+
+    return _Struct
 
 
-def wa(func):
+class Number(object):
 
-    @functools.wraps(qqq)
-    def wrap(*args):
-        return func()
+    def __init__(self, value):
+        self.value = value
 
-    return wrap
-
-
-@wa
-def foo(x):
-    print x
+    def __str__(self):
+        print "<{value}>".format(value=self.value)
 
 
-print foo.__name__
+class Add(object):
 
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        print "<{left}*{right}>".format(left=self.left,
+                                 right=self.right)
+
+
+class Mul(object):
+
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+
+    def __str__(self):
+        print "<{left}+{right}>".format(left=self.left,
+                                        right=self.right)
+
+if __name__ == "__main__":
+    print Number(2)
 
 

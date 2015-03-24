@@ -126,4 +126,3 @@ class WorkerBase(object):
         self.http_client.close()
 
 
-
