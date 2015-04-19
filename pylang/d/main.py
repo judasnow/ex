@@ -5,7 +5,7 @@ import time
 import tornado
 from tornado.options import define, options
 
-#from d.logging import logger
+from d.log import logger
 
 
 define("cmd", metavar="start_web|test_worker|start_worker", default="")
@@ -19,7 +19,7 @@ def main():
     if options.cmd == "start_web":
         from d.web.urls import urls
 
-        #logger.info("web start")
+        logger.info("web start")
 
         application = tornado.web.Application(urls,
                                               debug=options.debug,
