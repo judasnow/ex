@@ -35,5 +35,14 @@ public class Hello {
 
 <<<<<<< HEAD
 
+class Hello {
+    public void Main() {
+        
+    }
+}
+=======
+<<<<<<< HEAD
+
 =======
 >>>>>>> ac42c10c57090b0b584ad652e192f9f06ccb3b02
+>>>>>>> b11c21f994c2f0fa4484535d47450f850d79ad0c
