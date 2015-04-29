@@ -1,9 +1,6 @@
 
-<<<<<<< HEAD
-
 public class Hello {
 
-=======
     /**{
      * 创建并显示GUI。出于线程安全的考虑，
      * 这个方法在事件调用线程中调用。
@@ -25,7 +22,7 @@ public class Hello {
         frame.setVisible(true);
     }
  
->>>>>>> ac42c10c57090b0b584ad652e192f9f06ccb3b02
+
     public static void main(String[] args) {
         String[] s = { "name you name" };
         System.out.println(2.0e);
@@ -33,16 +30,3 @@ public class Hello {
 
 }
 
-<<<<<<< HEAD
-
-class Hello {
-    public void Main() {
-        
-    }
-}
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> ac42c10c57090b0b584ad652e192f9f06ccb3b02
->>>>>>> b11c21f994c2f0fa4484535d47450f850d79ad0c

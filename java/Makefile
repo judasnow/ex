@@ -5,3 +5,4 @@ hello:
 
 binary_search:
 	javac BinarySearch.java && java BinarySearch
+
