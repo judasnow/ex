@@ -13,8 +13,8 @@ console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(logging_formater)
 
 file_handler = logging.FileHandler("log/log.txt", "a", encoding="utf8")
-file_handler.setLevel(logging.DEBUG)
-file_handler.setFormatter(logging_formater)
+#file_handler.setLevel(logging.DEBUG)
+#file_handler.setFormatter(logging_formater)
 
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)

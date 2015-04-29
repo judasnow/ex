@@ -17,7 +17,7 @@ class Image(ModelBase):
     origin_url = CharField(default="") 
     file_name = CharField(default="")
     file_class = CharField(default="")
+    content = TextField(default="")
     caught_at = DateTimeField(default=datetime.datetime.now)
 
 
-Image.create_table()

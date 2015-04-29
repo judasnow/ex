@@ -13,7 +13,6 @@ from d.models.topic import Topic
 from d.models.image import Image
 
 #from d.logging import logger
-from d.config import config
 
 
 class WorkerBase(object):

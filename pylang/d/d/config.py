@@ -1,9 +1,12 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-config = {
-        "imgs_path": ""
-    }
 
-from .local_config import config
+db = {"host": "localhost",
+      "name": "d",
+      "user": "root",
+      "pwd": "root"}
+
+
+from .local_config import *
+
 
