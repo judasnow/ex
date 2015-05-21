@@ -9,4 +9,3 @@ class FARule:
     def applies_to(self, state, character):
         pass
 
-
