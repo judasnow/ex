@@ -14,7 +14,7 @@ class Database(object):
     def __init__(self, database):
         self.database = database
         self.conn = self.get_connection()
-    
+
     def get_connection(self):
         return sqlite3.connect(self.database)
     
